@@ -1,0 +1,43 @@
+.Q_main {
+  background: linear-gradient(to right, #36d1dc, #5b86e5);
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 10vh;
+  padding-bottom: 15px;
+  color: #ffffff;
+}
+
+.Q_question {
+  margin-bottom: 50px;
+}
+
+.Q_answer {
+  /* margin-left: 45px; */
+  margin-bottom: 10vh;
+}
+
+.Q_Card {
+  color: #555555;
+  margin-bottom: 15px;
+  animation-name: load;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+.Q_Card .card-text{
+  font-size: 25px;
+  padding-left: 25px;
+}
+
+@keyframes load {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

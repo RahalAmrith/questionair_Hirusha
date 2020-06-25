@@ -1,0 +1,91 @@
+.L_main {
+  background: linear-gradient(to right, #5b86e5, #36d1dc);
+  width: 100%;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.L_header {
+  height: 70px;
+  padding: 15px 35px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  /* width: 100%; */
+}
+
+.L_header .logo {
+  height: 100%;
+  margin-right: 35px;
+}
+
+.L_H_nav {
+  width: 100%;
+}
+
+.L_H_nav a {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: normal;
+  margin-right: 25px;
+}
+
+.L_H_nav .right {
+  float: right;
+}
+
+.L_H_Banner {
+  height: 500px;
+}
+
+.LHB_Col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* max-width: 750px; */
+}
+
+.LHB_Col .bannerImg {
+  height: 450px;
+}
+
+.LHB_Col h1 {
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.LHB_Col p {
+  max-width: 700px;
+}
+
+.LHB_Col button {
+  height: 45px;
+  width: 150px;
+  padding: 0px 15px;
+  background-color: #4fb0f1;
+  border: none;
+  border-radius: 22.5px;
+  color: #ffffff;
+  box-shadow: -3px 5px 8px #58585831;
+}
+
+.LH_Cards {
+  padding: 50px 0px;
+}
+
+.LH_Cards .card {
+  color: #5a5a5a;
+  height: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.LH_Cards .card .desc {
+  color: #5a5a5a;
+  height: 100%;
+  text-align: justify;
+  font-size: 13px;
+  cursor: pointer;
+}
