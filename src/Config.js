@@ -5,6 +5,7 @@ class Config {
 
     this.api = {
       getQuestions: "/api/inits/q",
+      uploadCV : "/api/cv/upload"
     };
   }
 }
