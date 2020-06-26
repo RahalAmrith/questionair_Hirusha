@@ -6,6 +6,9 @@ import Questions from "./View/Questions/Questions";
 import UploadFile from "./View/UploadFile/UploadFile";
 import Landing from "./View/Landing/Landing";
 import Dashboard from "./View/Dashboard/Dashboard";
+import SortListing from "./View/SortListing/SortListing";
+import Appraisal from "./View/Appraisal/Appraisal";
+import ProjectAnalysis from "./View/ProjectAnalysis/ProjectAnalysis";
 
 class App extends Component {
   constructor() {
@@ -33,8 +36,26 @@ class App extends Component {
             <Route
               exact
               strict
-              path="/upload"
+              path="/appraisal"
+              render={(props) => <Appraisal {...props} />}
+            />
+            <Route
+              exact
+              strict
+              path="/projectanalysis"
+              render={(props) => <ProjectAnalysis {...props} />}
+            />
+            <Route
+              exact
+              strict
+              path="/getstarted"
               render={(props) => <UploadFile {...props} />}
+            />
+            <Route
+              exact
+              strict
+              path="/sortlisting"
+              render={(props) => <SortListing {...props} />}
             />
             <Route
               exact

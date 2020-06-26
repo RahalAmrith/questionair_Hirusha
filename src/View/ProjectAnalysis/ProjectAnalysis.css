@@ -1,0 +1,13 @@
+.PA_main {
+    background: linear-gradient(to right, #36d1dc, #5b86e5);
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 10vh;
+    padding-bottom: 15px;
+  }
+  
+  .PA_main h1 {
+    color: #ffffff;
+    margin-bottom: 50px;
+  }
+  

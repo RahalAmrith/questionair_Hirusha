@@ -42,7 +42,9 @@ class Landing extends Component {
               revolving around employee recruitment, job placing, employee
               engagement and human resource decision making.
             </p>
-            <button>Get Started</button>
+            <button onClick={() => this.props.history.push("/getstarted")}>
+              Get Started
+            </button>
           </div>
           <div className="col-md-6 LHB_Col">
             <img className="bannerImg" alt="" src={Banner} />
@@ -51,6 +53,23 @@ class Landing extends Component {
 
         <div className="container-fluid LH_Cards">
           <div className="container row ">
+            <div className="col-md-3">
+              <div
+                className="card"
+                onClick={() => this.props.history.push("/sortlisting")}
+              >
+                <img className="card-img-top" src={db} alt="" />
+                <div className="card-body">
+                  <p className="card-text">Employee sort listing</p>
+                  <p className="card-text desc">
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div className="col-md-3">
               <div
                 className="card"
@@ -67,30 +86,15 @@ class Landing extends Component {
                 </div>
               </div>
             </div>
+
             <div className="col-md-3">
               <div
                 className="card"
-                onClick={() => this.props.history.push("/questions")}
-              >
-                <img className="card-img-top" src={db} alt="" />
-                <div className="card-body">
-                  <p className="card-text">Fill the form</p>
-                  <p className="card-text desc">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div
-                className="card"
-                onClick={() => this.props.history.push("/upload")}
+                onClick={() => this.props.history.push("/projectanalysis")}
               >
                 <img className="card-img-top" src={form} alt="" />
                 <div className="card-body">
-                  <p className="card-text">Import data from file</p>
+                  <p className="card-text">Project Analysis</p>
                   <p className="card-text desc">
                     It is a long established fact that a reader will be
                     distracted by the readable content of a page when looking at
