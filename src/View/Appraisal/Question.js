@@ -142,7 +142,7 @@ class Question extends Component {
     return (
       <div className="card mb-3">
         <div className="card-header">
-          {this.state.qIndex + 1}. {this.state.question}
+          {this.state.qIndex}. {this.state.question}
         </div>
         <div className="card-body">
           {/* =========================================== */}

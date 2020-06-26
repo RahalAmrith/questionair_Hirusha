@@ -73,7 +73,7 @@ class Landing extends Component {
             <div className="col-md-3">
               <div
                 className="card"
-                onClick={() => this.props.history.push("/questions")}
+                onClick={() => this.props.history.push("/appraisal")}
               >
                 <img className="card-img-top" src={questions} alt="" />
                 <div className="card-body">
