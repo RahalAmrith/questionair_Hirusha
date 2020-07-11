@@ -552,9 +552,15 @@ class Dashboard extends Component {
                         ],
                         datasets: [
                           {
-                            label: "",
-                            backgroundColor: "#6986b1",
-                            borderColor: "#6986b1",
+                            label: "one",
+                            backgroundColor: "#698600",
+                            borderColor: "#698600",
+                            data: [45, 80, 74, 55, 62, 60, 70],
+                          },
+                          {
+                            label: "two",
+                            backgroundColor: "#008658",
+                            borderColor: "#008658",
                             data: [80, 74, 55, 62, 60, 70, 45],
                           },
                         ],
@@ -565,7 +571,7 @@ class Dashboard extends Component {
                           text: "Sales for the Month",
                         },
                         legend: {
-                          display: false,
+                          display: true,
                         },
                         tooltips: {
                           color: "white",
@@ -955,7 +961,7 @@ class Dashboard extends Component {
                             borderColor: "",
                             borderWidth: 0,
                             data: [15, 62, 102, 40, 31, 50, 23],
-                          },
+                          }
                         ],
                       }}
                     />

@@ -81,9 +81,9 @@ class UploadFile extends Component {
             <div className="card-body">
               <h5 className="card-title">{data.qualification || "N/A"}</h5>
               <p className="card-text">{data.comment || "N/A"}</p>
-              <h6 className="card-subtitle mb-2 text-muted">
+              {/* <h6 className="card-subtitle mb-2 text-muted">
                 Score : {data.score}
-              </h6>
+              </h6> */}
             </div>
           </div>
         </div>
@@ -187,25 +187,39 @@ class UploadFile extends Component {
 
             {/* Education */}
             <div className="card mb-3">
-              <div className="card-header">Education</div>
+              <div className="card-header">
+                Education{" "}
+                <span className="FU_totals">{this.state.education_count}</span>
+              </div>
               <div className="card-body row">{EducationList}</div>
             </div>
 
             {/* Experience */}
             <div className="card mb-3">
-              <div className="card-header">Experience</div>
+              <div className="card-header">
+                Experience{" "}
+                <span className="FU_totals">{this.state.experience_count}</span>
+              </div>
               <div className="card-body">{ExperienceList}</div>
             </div>
 
             {/* Skills */}
             <div className="card mb-3">
-              <div className="card-header">Skills</div>
+              <div className="card-header">
+                Skills{" "}
+                <span className="FU_totals">{this.state.skills_count}</span>
+              </div>
               <div className="card-body row">{SkillsList}</div>
             </div>
 
             {/* SoftSkills */}
             <div className="card mb-3">
-              <div className="card-header">SoftSkills</div>
+              <div className="card-header">
+                SoftSkills{" "}
+                <span className="FU_totals">
+                  {this.state.soft_skills_count}
+                </span>
+              </div>
               <div className="card-body">{SoftSkillsList}</div>
             </div>
           </div>

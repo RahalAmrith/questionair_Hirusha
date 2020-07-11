@@ -60,11 +60,11 @@ class Landing extends Component {
               >
                 <img className="card-img-top" src={db} alt="" />
                 <div className="card-body">
-                  <p className="card-text">Employee sort listing</p>
+                  <p className="card-text">Cream-of-the-crop </p>
                   <p className="card-text desc">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
+                    Finding the best person for the job? Select this option to
+                    give your requirements to get a suitable list of candidates
+                    fitting your need
                   </p>
                 </div>
               </div>
@@ -77,11 +77,11 @@ class Landing extends Component {
               >
                 <img className="card-img-top" src={questions} alt="" />
                 <div className="card-body">
-                  <p className="card-text">Start questionnaire</p>
+                  <p className="card-text">What do YOU think? </p>
                   <p className="card-text desc">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
+                    Create a survey to measure your employee’s motivation and
+                    engagement. Get feedback from your employees and measure the
+                    employee engagement level through the survey results.
                   </p>
                 </div>
               </div>
@@ -94,11 +94,11 @@ class Landing extends Component {
               >
                 <img className="card-img-top" src={form} alt="" />
                 <div className="card-body">
-                  <p className="card-text">Project Analysis</p>
+                  <p className="card-text">Making the dream team</p>
                   <p className="card-text desc">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
+                    Click here to create a team most suitable for your next
+                    project. Just give in your project details and we will give
+                    you the people most suitable for it.
                   </p>
                 </div>
               </div>
@@ -110,11 +110,9 @@ class Landing extends Component {
               >
                 <img className="card-img-top" src={dashboard} alt="" />
                 <div className="card-body">
-                  <p className="card-text">Skip to the dashboard</p>
+                  <p className="card-text">The Dashboard</p>
                   <p className="card-text desc">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
+                    Go to your Dashboard to check how your company is doing!
                   </p>
                 </div>
               </div>

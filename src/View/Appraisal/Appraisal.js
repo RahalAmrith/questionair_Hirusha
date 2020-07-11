@@ -16,7 +16,8 @@ class Appraisal extends Component {
       additionalQ: false,
 
       showQuestions: false,
-      questions: [
+      questions: [],
+      questions2: [
         {
           qnumber: 1,
           question: "The core values of the company are aligned with my own",
@@ -94,14 +95,29 @@ class Appraisal extends Component {
     await this.setState({
       loading: true,
     });
+
+    var kDriver = [];
+    if (e.target.eDev) {
+      kDriver.push("Employee Development")
+    }
+    if (e.target.cult) {
+      kDriver.push("Culture")
+    }
+    if (e.target.WLBal) {
+      kDriver.push("Work-Life balance")
+    }
+    if (e.target.leadership) {
+      kDriver.push("Leadership")
+    }
     await this.setState({
-      keyDriver: e.target.keyDrivar.value,
+      keyDriver: kDriver,
       additionalQ: e.target.additionalQ.value,
     });
 
     var ReqData = {
       qtype: this.state.keyDriver,
       general: this.state.additionalQ,
+      ids : []
     };
 
     await Axios.post(
@@ -149,8 +165,8 @@ class Appraisal extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      type="radio"
-                      name="keyDrivar"
+                      type="checkbox"
+                      name="eDev"
                       value="empdev"
                     />
                     <label className="form-check-label">
@@ -160,8 +176,8 @@ class Appraisal extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      type="radio"
-                      name="keyDrivar"
+                      type="checkbox"
+                      name="cult"
                       value="culture"
                     />
                     <label className="form-check-label">Culture</label>
@@ -169,8 +185,8 @@ class Appraisal extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      type="radio"
-                      name="keyDrivar"
+                      type="checkbox"
+                      name="WLBal"
                       value="work"
                     />
                     <label className="form-check-label">
@@ -180,14 +196,14 @@ class Appraisal extends Component {
                   <div className="form-check mb-3">
                     <input
                       className="form-check-input"
-                      type="radio"
-                      name="keyDrivar"
+                      type="checkbox"
+                      name="leadership"
                       value="leader"
                     />
                     <label className="form-check-label">Leadership</label>
                   </div>
 
-                  <h5 className="card-title">Other Questions</h5>
+                  <h5 className="card-title">General Questions</h5>
                   <p className="card-text">
                     Do you want to add additional Questions
                   </p>

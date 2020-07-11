@@ -13,23 +13,24 @@ class SortListing extends Component {
       loading: false,
 
       //   get result
-      res: {
-        jobdescription: "DevOps Engineer",
-        expertizein: "AWS",
-        minexperiance_in_similar_role: 2,
-        minedu_qualification: "BSC",
-        major: "SE",
-        minGPA: 3.0,
-        maxAGE: 30,
-        gender: null,
-        maritalStatus: null,
-        languages: ["English"],
-        ComputerSkills: ["Python,AWS"],
-        ProfesstionalQ: ["AWSCSA"],
-        keyWords: [],
-        fromDate: "2020-04-01",
-        toDate: "2020-04-30",
-      },
+      // res: {
+      //   jobdescription: "DevOps Engineer",
+      //   expertizein: "AWS",
+      //   minexperiance_in_similar_role: 2,
+      //   minedu_qualification: "BSC",
+      //   major: "SE",
+      //   minGPA: 3.0,
+      //   maxAGE: 30,
+      //   gender: null,
+      //   maritalStatus: null,
+      //   languages: ["English"],
+      //   ComputerSkills: ["Python,AWS"],
+      //   ProfesstionalQ: ["AWSCSA"],
+      //   keyWords: [],
+      //   fromDate: "2020-04-01",
+      //   toDate: "2020-04-30",
+      // },
+      res: [],
       showRes: false,
     };
   }
@@ -45,7 +46,7 @@ class SortListing extends Component {
       )
       .then((Response) => {
         console.log(Response);
-        this.setState({ res: Response.data });
+        this.setState({ res: Response.data.candidate });
         this.setState({
           loading: false,
         });
@@ -54,23 +55,7 @@ class SortListing extends Component {
         console.error(Error);
 
         this.setState({
-          res: {
-            jobdescription: "DevOps Engineer",
-            expertizein: "AWS",
-            minexperiance_in_similar_role: 2,
-            minedu_qualification: "BSC",
-            major: "SE",
-            minGPA: 3.0,
-            maxAGE: 30,
-            gender: null,
-            maritalStatus: null,
-            languages: ["English"],
-            ComputerSkills: ["Python,AWS"],
-            ProfesstionalQ: ["AWSCSA"],
-            keyWords: [],
-            fromDate: "2020-04-01",
-            toDate: "2020-04-30",
-          },
+          res: [],
         });
         this.setState({
           loading: false,
@@ -84,6 +69,16 @@ class SortListing extends Component {
   }
 
   render() {
+    var empList = this.state.res.map((data, i) => {
+      return (
+        <tr>
+          <th scope="row">{i}</th>
+          <td>{data.uid}</td>
+          <td>{data.name}</td>
+          <td>{data.email}</td>
+        </tr>
+      );
+    });
     return (
       <div className="container-fluid SL_main">
         <Loading show={this.state.loading} />
@@ -274,7 +269,7 @@ class SortListing extends Component {
             })
           }
         >
-          <div className="card text-center">
+          {/* <div className="card text-center">
             <div className="card-header">Featured</div>
             <div className="card-body">
               <h5 className="card-title"> {this.state.res.jobdescription}</h5>
@@ -302,7 +297,18 @@ class SortListing extends Component {
             <div className="card-footer text-muted">
               {this.state.res.fromDate} - {this.state.res.toDate}
             </div>
-          </div>
+          </div> */}
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">uid</th>
+                <th scope="col">name</th>
+                <th scope="col">email</th>
+              </tr>
+            </thead>
+            <tbody>{empList}</tbody>
+          </table>
         </Modal>
       </div>
     );

@@ -9,6 +9,7 @@ import Dashboard from "./View/Dashboard/Dashboard";
 import SortListing from "./View/SortListing/SortListing";
 import Appraisal from "./View/Appraisal/Appraisal";
 import ProjectAnalysis from "./View/ProjectAnalysis/ProjectAnalysis";
+import Survey from "./View/Survey/Survey";
 
 class App extends Component {
   constructor() {
@@ -38,6 +39,12 @@ class App extends Component {
               strict
               path="/appraisal"
               render={(props) => <Appraisal {...props} />}
+            />
+            <Route
+              exact
+              strict
+              path="/survey/:id"
+              render={(props) => <Survey {...props} />}
             />
             <Route
               exact

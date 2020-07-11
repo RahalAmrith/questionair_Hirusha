@@ -8,11 +8,13 @@ class Config {
       uploadCV : "/api/emp/score",
 
       // getSurvayQuestions
-      getSurvayQuestions : "/api/apr/appr",
+      getEmaildSurvayQuestions : "/api/apr/appr",
+      getSurvayQuestions : "/api/apr/camp",
       setSurvayAns : "/api/apr/ans",
 
       // Project Analysis
-      getEmpData : "/api/trend/recruit"
+      getEmpData : "/api/trend/recruit",
+      sortlisting : "/sortlisting"
     };
   }
 }

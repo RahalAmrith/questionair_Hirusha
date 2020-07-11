@@ -17,8 +17,8 @@ class ProjectAnalysis extends Component {
       CVFile: null,
 
       required_time: "N/A",
-      givenTime : "",
-      employee_count: 5,
+      givenTime: "",
+      employee_count: 0,
       employees: [],
     };
   }
@@ -57,9 +57,14 @@ class ProjectAnalysis extends Component {
 
     axios
       .post(`${Config.host}${Config.port}${Config.api.getEmpData}`, reqData)
+      // .post(`https://zjmujtqcwg.execute-api.us-east-1.amazonaws.com/test/clientrequest`, reqData)
+      // .get(
+      //   `https://zjmujtqcwg.execute-api.us-east-1.amazonaws.com/test/clientrequest`
+      // )
       .then((Response) => {
         this.setState({
           ...Response.data.employees,
+          // employees: Response.data.candidate,
         });
       })
       .catch((Error) => {
@@ -93,6 +98,12 @@ class ProjectAnalysis extends Component {
             </ul>
           </div>
         </div>
+        // <tr>
+        //   <th scope="row">{i}</th>
+        //   <td>{data.uid}</td>
+        //   <td>{data.name}</td>
+        //   <td>{data.email}</td>
+        // </tr>
       );
     });
     return (
@@ -202,6 +213,36 @@ class ProjectAnalysis extends Component {
               </div>
             </div>
           </div>
+
+          // <div className="container">
+          //   <div className="card">
+          //     <div className="card-header">Employees</div>
+          //     <div className="card-body">
+          //       <h5 className="card-title">
+          //         Employee count : {this.state.employee_count}
+          //       </h5>
+          //       <h5 className="card-title">
+          //         Required Time : {this.state.required_time} days
+          //       </h5>
+          //       <h5 className="card-title">
+          //         Given time period for project : {this.state.givenTime} days
+          //       </h5>
+          //       <div className="row">
+          //         <table class="table">
+          //           <thead>
+          //             <tr>
+          //               <th scope="col">#</th>
+          //               <th scope="col">uid</th>
+          //               <th scope="col">name</th>
+          //               <th scope="col">email</th>
+          //             </tr>
+          //           </thead>
+          //           <tbody>{employeeCards}</tbody>
+          //         </table>
+          //       </div>
+          //     </div>
+          //   </div>
+          // </div>
         ) : null}
       </div>
     );
