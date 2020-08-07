@@ -8,7 +8,7 @@ import Loading from "../Loading/Loading";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";
-
+import NewSidebar from '../Dashboard/NewSideBar'
 import "./UploadFile.css";
 
 class UploadFile extends Component {
@@ -148,6 +148,7 @@ class UploadFile extends Component {
     return (
       <div className="container-fluid FU_main">
         <Loading show={this.state.loading} />
+
         <div className="container">
           <h1>Select and Upload your CV(s) here</h1>
 
@@ -163,25 +164,25 @@ class UploadFile extends Component {
                         type="text"
                         class="form-control"
                         aria-describedby="emailHelp"
-                        placeholder="Enter BSc"
+                        placeholder="Enter Mark"
                       />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">BSc</label>
+                      <label for="exampleInputEmail1">Msc</label>
                       <input
                         type="text"
                         class="form-control"
                         aria-describedby="emailHelp"
-                        placeholder="Enter BSc"
+                        placeholder="Enter Mark"
                       />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">BSc</label>
+                      <label for="exampleInputEmail1">Phd</label>
                       <input
                         type="text"
                         class="form-control"
                         aria-describedby="emailHelp"
-                        placeholder="Enter BSc"
+                        placeholder="Enter Mark"
                       />
                     </div>
                   </div>
@@ -192,7 +193,7 @@ class UploadFile extends Component {
                         type="text"
                         class="form-control"
                         aria-describedby="emailHelp"
-                        placeholder="Enter BSc"
+                        placeholder="Enter Mark"
                       />
                     </div>
                     <div class="form-group">

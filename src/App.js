@@ -15,6 +15,12 @@ import Results from "./View/Results/Results";
 import Login from "./View/Login/Login";
 import Register from "./View/Register/Register";
 
+
+
+import NewSideBard from "./View/Dashboard/NewSideBar";
+import BestCandidate from './View/BestCandidate/BestCandidate'
+
+
 class App extends Component {
   constructor() {
     super();
@@ -86,7 +92,7 @@ class App extends Component {
               exact
               strict
               path="/dashboard"
-              render={(props) => <Dashboard {...props} />}
+              render={(props) => <NewSideBard {...props} />}
             />
             <Route
               exact
@@ -99,6 +105,12 @@ class App extends Component {
               strict
               path="/register"
               render={(props) => <Register {...props} />}
+            />
+            <Route
+              exact
+              strict
+              path="/bestcandidate"
+              render={(props) => <BestCandidate {...props} />}
             />
           </Switch>
         </Router>
