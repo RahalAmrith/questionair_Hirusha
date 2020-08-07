@@ -29,6 +29,7 @@ import Appraisal from '../Appraisal/Appraisal'
 import Projectanalysis from '../ProjectAnalysis/ProjectAnalysis'
 import Bestcandidate from '../BestCandidate/BestCandidate'
 import ResultAll from '../Results/Results'
+import KeyDrivers from '../KeyDrivers/KeyDrivers'
 class AdminSidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -78,6 +79,8 @@ class AdminSidebar extends React.Component {
         return (<Bestcandidate/>)
         if(this.state.page == "resultall" )
         return (<ResultAll   />)
+        if(this.state.page == "keydrivers" )
+        return (<KeyDrivers   />)
     }
 
     render() {
@@ -137,11 +140,12 @@ class AdminSidebar extends React.Component {
                             <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                              
                                 <li style={{ color: '#c9cbcc' , cursor:'pointer'}} onClick={() => this.onchanePageState("appraisal")}> Survey </li>
+                              
                                 
                             </ul>
                             <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                                
-                                    <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Key Drivers  </li>
+                            <li style={{ color: '#c9cbcc' , cursor:'pointer'}} onClick={() => this.onchanePageState("keydrivers")}> Key Drivers  </li>
                                 
                             </ul>
                             {/* <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>

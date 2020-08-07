@@ -42,7 +42,7 @@ class Landing extends Component {
               revolving around employee recruitment, job placing, employee
               engagement and human resource decision making.
             </p>
-            <button onClick={() => this.props.history.push("/getstarted")}>
+            <button onClick={() => this.props.history.push("/dashboard")}>
               Get Started
             </button>
           </div>
