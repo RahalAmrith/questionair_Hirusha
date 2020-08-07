@@ -60,7 +60,7 @@ class Landing extends Component {
               >
                 <img className="card-img-top" src={db} alt="" />
                 <div className="card-body">
-                  <p className="card-text">Cream-of-the-crop </p>
+                  <p className="card-text">Acquiring great talent</p>
                   <p className="card-text desc">
                     Finding the best person for the job? Select this option to
                     give your requirements to get a suitable list of candidates
@@ -77,7 +77,7 @@ class Landing extends Component {
               >
                 <img className="card-img-top" src={questions} alt="" />
                 <div className="card-body">
-                  <p className="card-text">What do YOU think? </p>
+                  <p className="card-text">What do you think? </p>
                   <p className="card-text desc">
                     Create a survey to measure your employee’s motivation and
                     engagement. Get feedback from your employees and measure the
@@ -110,7 +110,7 @@ class Landing extends Component {
               >
                 <img className="card-img-top" src={dashboard} alt="" />
                 <div className="card-body">
-                  <p className="card-text">The Dashboard</p>
+                  <p className="card-text">Phoenix HR</p>
                   <p className="card-text desc">
                     Go to your Dashboard to check how your company is doing!
                   </p>

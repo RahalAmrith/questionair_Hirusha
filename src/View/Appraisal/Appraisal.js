@@ -154,8 +154,8 @@ class Appraisal extends Component {
         <Loading show={this.state.loading} />
         {this.state.showQuestions ? null : (
           <div className="container">
-            <h1>Appraisal Form</h1>
-            <hr />
+          <h3 style={{color:'white'}}>Employee Engagement Survey Generator
+</h3>           
             <div className="card">
               <div className="card-header">Key Driver</div>
               <div className="card-body">

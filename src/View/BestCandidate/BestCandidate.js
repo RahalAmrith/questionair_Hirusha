@@ -89,8 +89,8 @@ onchangebtnstate =() => {
         <Loading show={this.state.loading} />
 
         <div className="container">
-          <h1 className="mb-4">Find Top 10 Candidates</h1>
-          <h5 className="mb-2" style={{color:'white'}}>Retrieve the verified results after Interview process and Aptitude test of candidates.</h5>
+          <h3 className="mb-2" style={{color:'white'}}> Find Top  Candidates</h3>
+          <h6 className="mb-2" style={{color:'white'}}>Retrieve the verified results after Interview process and Aptitude test of candidates.</h6>
 
           <div className="card mb-3">
             {/* <div className="card-header">Define criteria</div> */}

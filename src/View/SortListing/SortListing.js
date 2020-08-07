@@ -83,7 +83,8 @@ class SortListing extends Component {
       <div className="container-fluid SL_main">
         <Loading show={this.state.loading} />
         <div className="container">
-          <h1>Employee Sort Listing</h1>
+          <h3 style={{color:'white'}}>Smart Candidate Ranker
+</h3>
         </div>
 
         <div className="container mb-5">

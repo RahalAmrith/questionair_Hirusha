@@ -151,7 +151,8 @@ class UploadFile extends Component {
 
 
         <div className="container">
-          <h1>Select and Upload your CV(s) here</h1>
+          <h3 className="mt-1 mb-1 pr-2"  style={{color:'white'}}>Smart Resume Analyser</h3>
+          <h6 className="mb-2" style={{color:'white'}}> Select and Upload your CV(s) here.</h6>
 
           <div className="card mb-3">
             <div className="card-header">Define criteria</div>
