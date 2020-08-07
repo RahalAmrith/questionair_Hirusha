@@ -151,6 +151,136 @@ class UploadFile extends Component {
         <div className="container">
           <h1>Select and Upload your CV(s) here</h1>
 
+          <div className="card mb-3">
+            <div className="card-header">Define criteria</div>
+            <div className="card-body">
+              <form>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">BSc</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter BSc"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">BSc</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter BSc"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">BSc</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter BSc"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Certification</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter BSc"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">
+                        Define the relevent Certification here
+                      </label>
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="5"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div className="card mb-3">
+            <div className="card-header">Criteria Type</div>
+            <div className="card-body">
+              <form>
+                <div className="row">
+                  <div className="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">
+                        Degree or Specification
+                      </label>
+                      <select
+                        class="form-control"
+                        id="exampleFormControlSelect1"
+                      >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-md-2">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Title</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter Title"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-2">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Year</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter Year"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-2">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Score</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter Score"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">
+                        Description
+                      </label>
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="1"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
           <FilePond
             // server={`${Config.host}${Config.port}${Config.api.uploadCV}`}
             onupdatefiles={(files) => {

@@ -39,9 +39,9 @@ class Survey extends Component {
       })
       .catch((Error) => {
         console.error(Error);
-        if (Error.Response.staus >= 400 && Error.Response.staus <= 499) {
-          alert("Sorry, Your session is expired or not authorized");
-        }
+        // if (Error.response.status >= 400 && Error.response.status <= 499) {
+        //   alert("Sorry, Your session is expired or not authorized");
+        // }
       })
       .finally(() => {
         this.setState({ showQuestions: true, loading: false });

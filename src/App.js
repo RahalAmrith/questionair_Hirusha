@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
+// import ProtectedRoute from "./ProtectedRoute";
 import Questions from "./View/Questions/Questions";
 import UploadFile from "./View/UploadFile/UploadFile";
 import Landing from "./View/Landing/Landing";
@@ -11,12 +12,22 @@ import Appraisal from "./View/Appraisal/Appraisal";
 import ProjectAnalysis from "./View/ProjectAnalysis/ProjectAnalysis";
 import Survey from "./View/Survey/Survey";
 import Results from "./View/Results/Results";
+import Login from "./View/Login/Login";
+import Register from "./View/Register/Register";
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      signedIn: "false",
+    };
   }
+
+  setSignIn = (state) => {
+    this.setState({
+      signedIn: state,
+    });
+  };
 
   render() {
     return (
@@ -76,6 +87,18 @@ class App extends Component {
               strict
               path="/dashboard"
               render={(props) => <Dashboard {...props} />}
+            />
+            <Route
+              exact
+              strict
+              path="/login"
+              render={(props) => <Login {...props} />}
+            />
+            <Route
+              exact
+              strict
+              path="/register"
+              render={(props) => <Register {...props} />}
             />
           </Switch>
         </Router>
