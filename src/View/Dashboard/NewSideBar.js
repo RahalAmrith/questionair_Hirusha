@@ -28,6 +28,7 @@ import Sortlisting from '../SortListing/SortListing'
 import Appraisal from '../Appraisal/Appraisal'
 import Projectanalysis from '../ProjectAnalysis/ProjectAnalysis'
 import Bestcandidate from '../BestCandidate/BestCandidate'
+import ResultAll from '../Results/Results'
 class AdminSidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -75,6 +76,8 @@ class AdminSidebar extends React.Component {
         return (<Projectanalysis/>)
         if(this.state.page == "bestcandidate" )
         return (<Bestcandidate/>)
+        if(this.state.page == "resultall" )
+        return (<ResultAll   />)
     }
 
     render() {
@@ -141,14 +144,14 @@ class AdminSidebar extends React.Component {
                                     <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Key Drivers  </li>
                                 
                             </ul>
-                            <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
+                            {/* <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                                
                                     <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Quizzes   </li>
                                 
-                            </ul>
+                            </ul> */}
                             <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                                
-                                    <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Survey Summary   </li>
+                            <li style={{ color: '#c9cbcc' , cursor:'pointer'}} onClick={() => this.onchanePageState("resultall")}> Survey Summary   </li>
                                 
                             </ul>
                         </li>

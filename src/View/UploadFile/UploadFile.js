@@ -149,6 +149,7 @@ class UploadFile extends Component {
       <div className="container-fluid FU_main">
         <Loading show={this.state.loading} />
 
+
         <div className="container">
           <h1>Select and Upload your CV(s) here</h1>
 
