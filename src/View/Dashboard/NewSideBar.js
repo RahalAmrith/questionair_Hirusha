@@ -30,6 +30,9 @@ import Projectanalysis from '../ProjectAnalysis/ProjectAnalysis'
 import Bestcandidate from '../BestCandidate/BestCandidate'
 import ResultAll from '../Results/Results'
 import KeyDrivers from '../KeyDrivers/KeyDrivers'
+
+
+import logo from '../Images/Logo.png'
 class AdminSidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -89,7 +92,8 @@ class AdminSidebar extends React.Component {
         return (
             <>
                 <nav className="navbar navbar-dark bg-dark py-0 shadow-sm  fixed-top">
-                    <span className="navbar-brand mb-0 h6 text-light ml-1">Dashboard
+                    
+                    <span className="navbar-brand mb-0 h6 text-light ml-1"><img src={logo} className="img-fluid mx-2" width="50px" />Phoenix HR
         <FontAwesomeIcon
                             onClick={() => this.setState({ side_bar_toggle: !this.state.side_bar_toggle })}
                             icon={faBars} className="ml-4 click show-icon"></FontAwesomeIcon>
