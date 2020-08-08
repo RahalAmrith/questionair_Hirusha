@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./Appraisal.css";
 import Question from "./Question";
 import Axios from "axios";
+import { Modal } from "react-bootstrap";
 
 import Config from "../../Config";
 import Loading from "../Loading/Loading";
@@ -17,6 +18,8 @@ class Appraisal extends Component {
 
       showQuestions: false,
       questions: [],
+      showRes: false,
+
       questions2: [
         {
           qnumber: 1,
@@ -145,6 +148,13 @@ class Appraisal extends Component {
       });
   }
 
+  chnagemodal=(e)=>{
+    e.preventDefault()
+    this.setState({
+      showRes: true,
+
+    })
+  }
   render() {
     var questionsList = this.state.questions.map((data, i) => {
       return <Question data={data} key={i} />;
@@ -159,7 +169,7 @@ class Appraisal extends Component {
             <div className="card">
               <div className="card-header">Key Driver</div>
               <div className="card-body">
-                <form onSubmit={(e) => this.handleKeyDriver(e)}>
+                <form >
                   <h5 className="card-title">Key Driver</h5>
                   <p className="card-text">Please Select your Key Driver</p>
                   <div className="form-check">
@@ -226,19 +236,33 @@ class Appraisal extends Component {
                     <label className="form-check-label">No</label>
                   </div>
 
-                  <button className="btn btn-primary">Submit</button>
+                  <button className="btn btn-primary" onClick={(e)=> this.chnagemodal(e)}>Submit</button>
                 </form>
               </div>
             </div>
           </div>
         )}
-        {this.state.showQuestions ? (
+        {/* {this.state.showQuestions ? (
           <div className="container">
             <h1>Survay Question</h1>
             <hr />
             {questionsList}
           </div>
-        ) : null}
+        ) : null} */}
+
+<Modal
+          size="md"
+          centered
+          show={this.state.showRes}
+          onHide={() =>
+            this.setState({
+              showRes: false,
+            })
+          }
+        >
+          
+          <h6 className="m-1 p-2">Employee Engagement Survey has distributed via employee emails.</h6>
+        </Modal>
       </div>
     );
   }

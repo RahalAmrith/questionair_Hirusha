@@ -270,35 +270,7 @@ class SortListing extends Component {
             })
           }
         >
-          {/* <div className="card text-center">
-            <div className="card-header">Featured</div>
-            <div className="card-body">
-              <h5 className="card-title"> {this.state.res.jobdescription}</h5>
-              <p className="card-text" style={{ textAlign: "left" }}>
-                Expertizein: {this.state.res.expertizein} <br />
-                Min Experiance in similar role:
-                {this.state.res.minexperiance_in_similar_role} <br />
-                Minedu qualification: {this.state.res.minedu_qualification}
-                <br />
-                Major: {this.state.res.major} <br />
-                Min GPA : {this.state.res.minGPA} <br />
-                Max AGE : {this.state.res.maxAGE} <br />
-                Gender : {this.state.res.gender} <br />
-                Marital Status : {this.state.res.maritalStatus} <br />
-                Languages : {this.state.res.languages} <br />
-                Computer Skills : {this.state.res.ComputerSkills}
-                <br />
-                Professtional Qualifications : {
-                  this.state.res.ProfesstionalQ
-                }{" "}
-                <br />
-                keyWords : {this.state.res.keyWords} <br />
-              </p>
-            </div>
-            <div className="card-footer text-muted">
-              {this.state.res.fromDate} - {this.state.res.toDate}
-            </div>
-          </div> */}
+        
           <table className="table">
             <thead>
               <tr>

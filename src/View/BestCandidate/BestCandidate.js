@@ -54,30 +54,46 @@ onchangebtnstate =() => {
           <td>34</td>
         </tr>
           <tr>
-          <th scope="row">Padula Guruge</th>
-          <td> 90</td>
-          <td>0776341997</td>
-          <td>padula@gmail.com</td>
-          <td>34</td>
+          <th scope="row">Rahal Amirth</th>
+          <td> 82</td>
+          <td>0728343000</td>
+          <td>rahalamrith46@gmail.com</td>
+          <td>24</td>
         </tr>
           <tr>
-          <th scope="row">Padula Guruge</th>
-          <td> 90</td>
-          <td>0776341997</td>
-          <td>padula@gmail.com</td>
-          <td>34</td>
+          <th scope="row">Savindu Nipun</th>
+          <td> 78</td>
+          <td>0776345006</td>
+          <td>snipun@gmail.com</td>
+          <td>44</td>
         </tr>
           <tr>
-          <th scope="row">Padula Guruge</th>
-          <td> 90</td>
-          <td>0776341997</td>
-          <td>padula@gmail.com</td>
-          <td>34</td>
+          <th scope="row">Sandini Pitawala</th>
+          <td> 77</td>
+          <td>0771138255</td>
+          <td>sandini97@gmail.com</td>
+          <td>40</td>
+        </tr>
+          <tr>
+          <th scope="row">Dulanjana Isuru</th>
+          <td>60</td>
+          <td>0713645444</td>
+          <td>isududulanjana@gmail.com</td>
+          <td>50</td>
+        </tr>
+          <tr>
+          <th scope="row">Pasindu Chamod</th>
+          <td>60</td>
+          <td>0756241887</td>
+          <td>chamod.p@gmail.com</td>
+          <td>48</td>
         </tr>
           </tbody>
         </table> </div> </div>);
       }
   }   
+
+
 
 
 
@@ -89,7 +105,7 @@ onchangebtnstate =() => {
         <Loading show={this.state.loading} />
 
         <div className="container">
-          <h3 className="mb-2" style={{color:'white'}}> Find Top  Candidates</h3>
+          <h3 className="mb-2" style={{color:'white'}}>Find Top  Candidates</h3>
           <h6 className="mb-2" style={{color:'white'}}>Retrieve the verified results after Interview process and Aptitude test of candidates.</h6>
 
           <div className="card mb-3">

@@ -109,7 +109,7 @@ class ProjectAnalysis extends Component {
     return (
       <div className="container-fluid PA_main">
         <div className="container mb-5">
-          <h1>Project Analysis</h1>
+        <h3 className="mt-1 mb-1 pr-2"  style={{color:'white'}}>Smart Project Allocator</h3>
           <hr />
 
           <form onSubmit={(e) => this.handleSubmit(e)}>

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-
+import {Modal} from 'react-bootstrap'
 
 
 class KeyDrivers extends Component {
     constructor() {
         super();
         this.state = {
+            showRes: false,
+            showRes2: false,
+
             all_key_drivers: ['Employee Development', 'Culture', 'Work-Life balance', 'Leadership']
         };
 
@@ -13,6 +16,21 @@ class KeyDrivers extends Component {
 
     }
 
+    onmodl =(e)=>{
+        e.preventDefault()
+        this.setState({
+            showRes: true,
+
+        })
+    }
+
+    modal2 =(e)=>{
+        e.preventDefault()
+        this.setState({
+            showRes2: true,
+
+        })
+    }
 
     addNewDriver = (newone) => {
         this.setState({
@@ -46,6 +64,11 @@ class KeyDrivers extends Component {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div class="form-group">
+                                        <label for="exampleInputEmail1">Employee Development</label> <br/>
+                                        <label for="exampleInputEmail1">Culture</label> <br/>
+                                        <label for="exampleInputEmail1">Work-Life balance</label> <br/>
+                                        <label for="exampleInputEmail1">Leadership</label> <br/>
+
                                             {this.displayItems()}
 
                                         </div>
@@ -63,7 +86,7 @@ class KeyDrivers extends Component {
                                             />
                                             <button
                                                 className="btn btn-light  text-secondary mt-1 mb-1 p-1"
-                                                style={{ borderColor: 'black', color: 'white !important' }}
+                                                style={{ borderColor: 'black', color: 'white !important' }} onClick={(e)=>this.onmodl(e)}
                                             >
                                                 Add New </button>
                                         </div>
@@ -127,10 +150,44 @@ class KeyDrivers extends Component {
                                         </div>
 
                                     </div>
+                                    <button
+                  onClick={(e) => this.modal2(e)}
+                  type="button"
+                  className="btn btn-light"
+                  style={{borderColor:'black'}}
+                >
+                  Submit
+                </button>
                                 </div>
                             </form>
                         </div>
                     </div>
+                    <Modal
+          size="md"
+          centered
+          show={this.state.showRes}
+          onHide={() =>
+            this.setState({
+              showRes: false,
+            })
+          }
+        >
+    
+          <h6 className="m-1 p-2">New key driver value has added!</h6>
+        </Modal>
+                    <Modal
+          size="md"
+          centered
+          show={this.state.showRes2}
+          onHide={() =>
+            this.setState({
+                showRes2: false,
+            })
+          }
+        >
+    
+          <h6 className="m-1 p-2">New question has added to ""Employee Development" questionnaire bulk!</h6>
+        </Modal>
                 </div>
 
             </div>
