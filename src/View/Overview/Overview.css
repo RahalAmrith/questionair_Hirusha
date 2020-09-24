@@ -1,0 +1,108 @@
+.overviewMain {
+  padding: 75px 15px;
+  background-color: #a5a5a555;
+}
+
+.cardIcon {
+  font-size: 50px;
+  margin-bottom: 10px;
+  margin-right: 25px;
+}
+
+.grdFrost {
+  color: #ffffff;
+  background: #000428; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #004e92,
+    #000428
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #004e92,
+    #000428
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.grdtransfile {
+  color: #ffffff;
+  background: #16bffd; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #cb3066,
+    #16bffd
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #cb3066,
+    #16bffd
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.grdPolitics {
+  color: #ffffff;
+  background: #2196f3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f44336,
+    #2196f3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f44336,
+    #2196f3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.gridwrapper {
+    width: 100%;
+}
+
+.radarChart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.radarChart .legend {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.radarChart .legend .brand1, .radarChart .legend .brand2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
+    width: 150px;
+    transform: translateX(50px);
+    cursor: pointer;
+    font-size: 14px;
+}
+.radarChart .legend .brand1 .icon, .radarChart .legend .brand2 .icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+.radarChart .legend .brand1 .label, .radarChart .legend .brand2 .label {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.radarChart .legend .brand1 {
+    margin-bottom: 35px;
+}
+.radarChart .legend .brand1 .icon {
+    background-color: #555555;
+}
+.radarChart .legend .brand2 .icon {
+    background-color: #55555588;
+}
+.radarChart .echarts-for-react {
+    flex: 1;
+    height: 500px !important;
+}

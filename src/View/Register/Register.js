@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: 15,
   },
-  form : {
-maxWidth : "768px"
+  form: {
+    maxWidth: "768px",
   },
   root: {
     "& > *": {
