@@ -40,12 +40,12 @@ ul.sidebar {
     
 }
 .listitem{
-    background-color: #32394188;
+    /* background-color: #32394188; */
     padding : 14px 0px;
     border-bottom: 1px solid #464d551f;
 }
 .listitem:hover{
-    background-color: #323941;
+    /* background-color: #323941; */
 }
 
 .sidebar-image{

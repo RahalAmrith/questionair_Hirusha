@@ -28,6 +28,11 @@ import Sortlisting from '../SortListing/SortListing'
 import Appraisal from '../Appraisal/Appraisal'
 import Projectanalysis from '../ProjectAnalysis/ProjectAnalysis'
 import Bestcandidate from '../BestCandidate/BestCandidate'
+import ResultAll from '../Results/Results'
+import KeyDrivers from '../KeyDrivers/KeyDrivers'
+
+
+import logo from '../Images/Logo.png'
 class AdminSidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -75,6 +80,10 @@ class AdminSidebar extends React.Component {
         return (<Projectanalysis/>)
         if(this.state.page == "bestcandidate" )
         return (<Bestcandidate/>)
+        if(this.state.page == "resultall" )
+        return (<ResultAll   />)
+        if(this.state.page == "keydrivers" )
+        return (<KeyDrivers   />)
     }
 
     render() {
@@ -83,7 +92,8 @@ class AdminSidebar extends React.Component {
         return (
             <>
                 <nav className="navbar navbar-dark bg-dark py-0 shadow-sm  fixed-top">
-                    <span className="navbar-brand mb-0 h6 text-light ml-1">Dashboard
+                    
+                    <span className="navbar-brand mb-0 h6 text-light ml-1"><img src={logo} className="img-fluid mx-2" width="50px" />Phoenix HR
         <FontAwesomeIcon
                             onClick={() => this.setState({ side_bar_toggle: !this.state.side_bar_toggle })}
                             icon={faBars} className="ml-4 click show-icon"></FontAwesomeIcon>
@@ -134,21 +144,22 @@ class AdminSidebar extends React.Component {
                             <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                              
                                 <li style={{ color: '#c9cbcc' , cursor:'pointer'}} onClick={() => this.onchanePageState("appraisal")}> Survey </li>
+                              
                                 
                             </ul>
                             <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                                
-                                    <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Key Drivers  </li>
+                            <li style={{ color: '#c9cbcc' , cursor:'pointer'}} onClick={() => this.onchanePageState("keydrivers")}> Key Drivers  </li>
                                 
                             </ul>
-                            <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
+                            {/* <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                                
                                     <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Quizzes   </li>
                                 
-                            </ul>
+                            </ul> */}
                             <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                                
-                                    <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Survey Summary   </li>
+                            <li style={{ color: '#c9cbcc' , cursor:'pointer'}} onClick={() => this.onchanePageState("resultall")}> Survey Summary   </li>
                                 
                             </ul>
                         </li>
