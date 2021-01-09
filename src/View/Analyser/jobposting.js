@@ -8,14 +8,15 @@ import Loading from "../Loading/Loading";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";
-
+import { Modal, Button } from 'react-bootstrap'
 class JobPosting extends Component {
     constructor() {
         super();
         this.state = {
             loading: false,
             btnsate: false,
-            jobs: []
+            jobs: [],
+            show: false
         };
     }
 
@@ -23,20 +24,44 @@ class JobPosting extends Component {
         const res = await axios.post(`https://1w8w5rck4i.execute-api.us-east-1.amazonaws.com/Prod/jpops`,
             {
                 operation: "view"
-            }, {
-            "Access-Control-Allow-Headers": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST",
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-        }).then(Response => {
+            },
+            {
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Methods": "POST",
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json",
+            })
 
-            console.log(Response);
-        })
-            .catch(err => {
-                console.error(err);
-            });
+        console.log(res);
+        // const res = await axios.post(`https://1w8w5rck4i.execute-api.us-east-1.amazonaws.com/Prod/jpops`,
+        //     {
+        //         operation: "view"
+        //     }, {headers: {
+        //         "Access-Control-Allow-Headers": "*",
+        //         "Access-Control-Allow-Methods": "POST",
+        //         "Access-Control-Allow-Origin": "*",
+        //         "Content-Type": "application/json",
+        //     }}
+        //     )
+        // ).then(Response => {
+
+        //     console.log(Response);
+        // })
+        //     .catch(err => {
+        //         console.error(err);
+        //     });
     }
 
+    handleShow() {
+        this.setState({
+            show: true
+        })
+    }
+    handleClose() {
+        this.setState({
+            show: false
+        })
+    }
     render() {
         return (
             <div className="container-fluid FU_main">
@@ -61,7 +86,7 @@ class JobPosting extends Component {
                                     <td>90</td>
                                     <td>0776341997</td>
                                     <td>padula@gmail.com</td>
-                                    <td><button className="btn btn-success"> View More</button></td>
+                                    <td><button className="btn btn-success" onClick={() => this.handleShow()}> View More</button></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Rahal Amirth</th>
@@ -101,6 +126,24 @@ class JobPosting extends Component {
                             </tbody>
                         </table>
                     </div>
+                    <Modal
+                        show={this.state.show}
+                        onHide={()=>this.handleClose()}
+                        backdrop="static"
+                        keyboard={false}
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title>Modal title</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            I will not close if you click outside me. Don't even try to press
+                            escape key.  </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={()=>this.handleClose()}>
+                                Close  </Button>
+                            <Button variant="primary">Understood</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
             </div>
         );

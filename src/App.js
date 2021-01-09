@@ -21,6 +21,7 @@ import NewSideBard from "./View/Dashboard/NewSideBar";
 import BestCandidate from './View/BestCandidate/BestCandidate'
 
 import Single_Job_Posting from './View/Analyser/single_job_psoting'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
@@ -114,12 +115,7 @@ class App extends Component {
               path="/bestcandidate"
               render={(props) => <BestCandidate {...props} />}
             />
-            <Route
-              exact
-              strict
-              path="/single_job"
-              render={(props) => <Single_Job_Posting {...props} />}
-            />
+           
           </Switch>
         </Router>
       </div>
