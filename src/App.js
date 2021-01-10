@@ -20,6 +20,9 @@ import Register from "./View/Register/Register";
 import NewSideBard from "./View/Dashboard/NewSideBar";
 import BestCandidate from './View/BestCandidate/BestCandidate'
 
+import Single_Job_Posting from './View/Analyser/single_job_psoting'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component {
   constructor() {
@@ -112,6 +115,7 @@ class App extends Component {
               path="/bestcandidate"
               render={(props) => <BestCandidate {...props} />}
             />
+           
           </Switch>
         </Router>
       </div>

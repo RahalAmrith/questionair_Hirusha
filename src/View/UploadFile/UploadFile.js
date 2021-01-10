@@ -149,8 +149,10 @@ class UploadFile extends Component {
       <div className="container-fluid FU_main">
         <Loading show={this.state.loading} />
 
+
         <div className="container">
-          <h1>Select and Upload your CV(s) here</h1>
+          <h3 className="mt-1 mb-1 pr-2"  style={{color:'white'}}>Smart Resume Analyser</h3>
+          <h6 className="mb-2" style={{color:'white'}}> Select and Upload your CV(s) here.</h6>
 
           <div className="card mb-3">
             <div className="card-header">Define criteria</div>
@@ -213,12 +215,12 @@ class UploadFile extends Component {
           </div>
 
           <div className="card mb-3">
-            <div className="card-header">Criteria Type</div>
+            <div className="card-header">Experience</div>
             <div className="card-body">
               <form>
                 <div className="row">
-                  <div className="col-md-3">
-                    <div class="form-group">
+                  {/* <div className="col-md-3"> */}
+                    {/* <div class="form-group">
                       <label for="exampleFormControlSelect1">
                         Degree or Specification
                       </label>
@@ -230,8 +232,8 @@ class UploadFile extends Component {
                         <option>2</option>
                         <option>3</option>
                       </select>
-                    </div>
-                  </div>
+                    </div> */}
+                  {/* </div> */}
                   <div className="col-md-2">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Title</label>
@@ -276,6 +278,9 @@ class UploadFile extends Component {
                         rows="1"
                       ></textarea>
                     </div>
+                  </div>
+                  <div className="col-md-3">
+                    <img className="img-fluid mt-4 pt-2" style={{width:'30px'}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEX///8jHyAAAAAaFRYSDA6LiYri4eFiYWHW1tYeGhsJAABBPj82MjQdGBmsrKwXERP29vbo5+fd3d1xb288OTq7urrw8PCgn58NAwZqaGnBwMGUk5NJR0hbWVkqJieCgIHQz9Ccm5tTUFEvLC2xsbF5d3hOS0zIiU7wAAADHUlEQVR4nO3di3KiQBBAUafBBwYEFRXjKzFx//8T12zWVLJRgaJ1muw9H0DNLRRUZsZOBwAAAAAAAAAAAADuLhv3TsZz34PRN1mtXSEnwyCePvoekqrBRsIkcp9EqWwXvoelZyeB+y6SeOJ7ZDqyfHim771x5ntwGrI8vRB49CMSN+HlwGPiwPf4GlvItUCX5L4H2NS8uBp4PIltv6Kuygpd6HuIDX29C549ie2+2AyuvwvfpFPfg2xkUfoidZHzPchGdlfuhR8v08z3KJtYnvu49m/h2Pcom+hXKez5HmUTFFJoH4UU2kchhfZRSKF9FFJoH4UU2kchhfZRSKF9FFJoH4UU2kchhfZRSKF9FFJoH4UU2kfhn0JLM/fGs0W3lrx0irBz6aHWIVevT7earpk9P4gUYS0VAo+J9Y45lHR6kzUMCymSKuO9h1Q26i/t+bp8xvY9pdoT4HvbCtOZ70ueNQPnLxWuifcmI8XCvbkz+EZxzdTI1nvwJHpRK7QZeDyJr0qBRk+hc8mDUuHe4GXmnegss82snkLnCp2lfU92C4OlSuHMbmGyVykcXVqK7Z/SpcZwYUQhhRR6RyGF/03hq91CpTu+4U9twUalcGK3MD2oFHaubjDjldaX/KnJ36HeiNKuaGa/IAZ9ncBOJzfzc/5Xej8nVtiDxYdQcd+XrsXEZKv5lG1p764fhbr72S2tncW00H6G+CyW7hmR/NLfPrPXl2qPdG8uSiXWfO70qXH1EEg9lW4zw3rHLF5uuTPovDeoY7KvkDic1TumpakbzKehsA0opNA+Cim0j0IK7aOQQvsopNA+Cim0j0IK7aOQQvsopNA+Cim0j0IK7aOQQvsopNA+Cim0r8pSDVP7RNXWrbDeRnwPspEK696idv+rc698AnzY9T3IZsqX28iT7zE2U7p4UW0HFm/KTqLccFb6fZQsfNNcu+TL6lpiELf6D53/2l1ODCL9lS8+rC4tLBnmPyPw+F6M5cx6olBafif8YhRLkSbRhyCU8NDqT9zfDRaHdXyS97uPP+ESAwAAAAAAAAAAAAAA6vkNvAxEYI0I/1QAAAAASUVORK5CYII=" />
                   </div>
                 </div>
               </form>

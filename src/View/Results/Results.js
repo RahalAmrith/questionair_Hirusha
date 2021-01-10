@@ -27,7 +27,7 @@ class Results extends Component {
     });
 
     var ReqData = {
-      token: this.props.match.params.id,
+      token: "all",
     };
 
     await Axios.post(
