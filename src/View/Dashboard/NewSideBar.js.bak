@@ -19,7 +19,6 @@ import {
   faUsers,
   faSuitcase,
   faSignOutAlt,
-  faMeteor,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Overview from "../Overview/Overview";
@@ -28,13 +27,6 @@ import Sortlisting from "../SortListing/SortListing";
 import Appraisal from "../Appraisal/Appraisal";
 import Projectanalysis from "../ProjectAnalysis/ProjectAnalysis";
 import Bestcandidate from "../BestCandidate/BestCandidate";
-import ResultAll from "../Results/Results";
-import KeyDrivers from "../KeyDrivers/KeyDrivers";
-import Initials from "../Analyser/initial";
-import JobPosting from "../Analyser/jobposting";
-import Algorithams from "../Analyser/algorithams";
-
-import logo from "../Images/Logo.png";
 class AdminSidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -57,11 +49,6 @@ class AdminSidebar extends React.Component {
     if (this.state.page == "appraisal") return <Appraisal />;
     if (this.state.page == "projectanalysis") return <Projectanalysis />;
     if (this.state.page == "bestcandidate") return <Bestcandidate />;
-    if (this.state.page == "resultall") return <ResultAll />;
-    if (this.state.page == "keydrivers") return <KeyDrivers />;
-    if (this.state.page == "initial") return <Initials />;
-    if (this.state.page == "algorithms") return <Algorithams />;
-    if (this.state.page == "jobposting") return <JobPosting />;
   };
 
   render() {
@@ -71,8 +58,7 @@ class AdminSidebar extends React.Component {
       <>
         <nav className="navbar navbar-dark bg-dark py-0 shadow-sm  fixed-top">
           <span className="navbar-brand mb-0 h6 text-light ml-1">
-            <img src={logo} className="img-fluid mx-2" width="50px" />
-            Phoenix HR
+            Dashboard
             <FontAwesomeIcon
               onClick={() =>
                 this.setState({ side_bar_toggle: !this.state.side_bar_toggle })
@@ -153,39 +139,6 @@ class AdminSidebar extends React.Component {
                 </li>
               </ul>
             </li>
-            <li className="listitem" className={`listitem`}>
-              <h6 className={`categorylink px-2`}>
-                <FontAwesomeIcon
-                  icon={faMeteor}
-                  className="mx-3 sidebar-icon"
-                ></FontAwesomeIcon>
-                Analyser
-              </h6>
-              <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
-                <li
-                  style={{ color: "#c9cbcc", cursor: "pointer" }}
-                  onClick={() => this.onchanePageState("initial")}
-                >
-                  Initial
-                </li>
-              </ul>
-              <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
-                <li
-                  style={{ color: "#c9cbcc", cursor: "pointer" }}
-                  onClick={() => this.onchanePageState("algorithms")}
-                >
-                  Algorithms
-                </li>
-              </ul>
-              <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
-                <li
-                  style={{ color: "#c9cbcc", cursor: "pointer" }}
-                  onClick={() => this.onchanePageState("jobposting")}
-                >
-                  Job Posting
-                </li>
-              </ul>
-            </li>
 
             <li
               className="listitem"
@@ -208,24 +161,19 @@ class AdminSidebar extends React.Component {
                 </li>
               </ul>
               <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
-                <li
-                  style={{ color: "#c9cbcc", cursor: "pointer" }}
-                  onClick={() => this.onchanePageState("keydrivers")}
-                >
+                <li style={{ color: "#c9cbcc", cursor: "pointer" }}>
                   {" "}
                   Key Drivers{" "}
                 </li>
               </ul>
-              {/* <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
-                               
-                                    <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Quizzes   </li>
-                                
-                            </ul> */}
               <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
-                <li
-                  style={{ color: "#c9cbcc", cursor: "pointer" }}
-                  onClick={() => this.onchanePageState("resultall")}
-                >
+                <li style={{ color: "#c9cbcc", cursor: "pointer" }}>
+                  {" "}
+                  Quizzes{" "}
+                </li>
+              </ul>
+              <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
+                <li style={{ color: "#c9cbcc", cursor: "pointer" }}>
                   {" "}
                   Survey Summary{" "}
                 </li>
@@ -261,6 +209,7 @@ class AdminSidebar extends React.Component {
                 </li>
               </ul>
             </li>
+
             {/* <li
                             className={`listitem click`}>
                             <h6 className={`categorylink px-2 `}>

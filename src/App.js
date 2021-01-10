@@ -96,6 +96,7 @@ class App extends Component {
               strict
               path="/dashboard"
               render={(props) => <NewSideBard {...props} />}
+              // render={(props) => <Dashboard {...props} />}
             />
             <Route
               exact
