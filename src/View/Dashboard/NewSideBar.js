@@ -140,7 +140,7 @@ class AdminSidebar extends React.Component {
                   onClick={() => this.onchanePageState("sortlisting")}
                 >
                   {" "}
-                  Ranker{" "}
+                  Score Cards{" "}
                 </li>
               </ul>
               <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>

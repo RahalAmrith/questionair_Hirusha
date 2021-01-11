@@ -1,53 +1,45 @@
 import React, { Component } from "react";
-import { Modal } from "react-bootstrap";
+import Config from "../../Config";
+import { FilePond, registerPlugin } from "react-filepond";
 
 import axios from "axios";
 
-import "./SortListing.css";
 import Loading from "../Loading/Loading";
 
-class SortListing extends Component {
+// Import FilePond styles
+import "filepond/dist/filepond.min.css";
+import { Modal, Button } from "react-bootstrap";
+class JobPosting extends Component {
   constructor() {
     super();
     this.state = {
       loading: false,
-
-      //   get result
-      // res: {
-      //   jobdescription: "DevOps Engineer",
-      //   expertizein: "AWS",
-      //   minexperiance_in_similar_role: 2,
-      //   minedu_qualification: "BSC",
-      //   major: "SE",
-      //   minGPA: 3.0,
-      //   maxAGE: 30,
-      //   gender: null,
-      //   maritalStatus: null,
-      //   languages: ["English"],
-      //   ComputerSkills: ["Python,AWS"],
-      //   ProfesstionalQ: ["AWSCSA"],
-      //   keyWords: [],
-      //   fromDate: "2020-04-01",
-      //   toDate: "2020-04-30",
-      // },
-      res: [],
-      showRes: false,
+      btnsate: false,
+      jobs: [],
+      currentCard: null,
+      show: false,
     };
   }
 
-  async handleSubmit() {
+  async componentDidMount() {
+    await this.loadData();
+  }
+
+  async loadData() {
     this.setState({
       loading: true,
     });
 
+    const data = {
+      operation: "view",
+    };
+
     await axios
-      .get(
-        `https://zjmujtqcwg.execute-api.us-east-1.amazonaws.com/test/clientrequest`
-      )
+      .post(`http://54.211.25.125:5000/api/emp/showcards`, data)
       .then((Response) => {
         console.log(Response);
-        this.setState({ res: Response.data.candidate });
         this.setState({
+          jobs: Response.data.data,
           loading: false,
         });
       })
@@ -55,7 +47,7 @@ class SortListing extends Component {
         console.error(Error);
 
         this.setState({
-          res: [],
+          jobs: [],
         });
         this.setState({
           loading: false,
@@ -68,224 +60,283 @@ class SortListing extends Component {
       });
   }
 
-  render() {
-    var empList = this.state.res.map((data, i) => {
-      return (
-        <tr>
-          <th scope="row">{i}</th>
-          <td>{data.uid}</td>
-          <td>{data.name}</td>
-          <td>{data.email}</td>
-        </tr>
-      );
+  // async handleDelete(_data) {
+  //   this.setState({
+  //     loading: true,
+  //   });
+
+  //   const data = {
+  //     operation: "delete",
+  //     jobid: _data.jpid,
+  //   };
+
+  //   await axios
+  //     .post(`http://54.211.25.125:5000/api/emp/jobposting`, data)
+  //     .then((Response) => {
+  //       console.log(Response);
+  //       this.setState({
+  //         loading: false,
+  //       });
+  //     })
+  //     .catch((Error) => {
+  //       console.error(Error);
+
+  //       this.setState({
+  //         loading: false,
+  //       });
+  //     })
+  //     .finally(() => {
+  //       this.loadData();
+  //     });
+  // }
+
+  handleClose() {
+    this.setState({
+      show: false,
+      currentCard: null,
     });
+  }
+  render() {
     return (
-      <div className="container-fluid SL_main">
+      <div className="container-fluid FU_main">
         <Loading show={this.state.loading} />
-        <div className="container">
-          <h3 style={{color:'white'}}>Smart Candidate Ranker
-</h3>
+        <div className="container-fluid">
+          <h3 className="mb-2" style={{ color: "white" }}>
+            Score cards
+          </h3>
+
+          {this.state.jobs.map((data, i) => {
+            return (
+              <div key={i} className="card mb-3 jobCard">
+                <div className="row">
+                  <div className="col-sm-4">
+                    <b>Name: </b> <br />
+                    {data.name}
+                    <br />
+                    <b>Email: </b> <br />
+                    {data.email}
+                    <br />
+                    <b>Phone: </b> <br />
+                    {data.phone}
+                    <br />
+                    <b>Address: </b>
+                    <br />
+                    {data.address}
+                    <br />
+                  </div>
+                  <div className="col-sm-4">
+                    <b>Eucation marks: </b> <br />
+                    <button disabled className="btn btn-warning">
+                      {" "}
+                      {data.education_total}
+                    </button>
+                    <br />
+                    <b>Experience marks: </b> <br />
+                    <button disabled className="btn btn-warning">
+                      {" "}
+                      {data.experience_total}
+                    </button>
+                    <br />
+                    <b>Skills marks: </b> <br />
+                    <button disabled className="btn btn-warning">
+                      {" "}
+                      {data.skills_total}
+                    </button>
+                    <br />
+                    <b>Soft skills marks: </b> <br />
+                    <button disabled className="btn btn-warning">
+                      {" "}
+                      {data.soft_skills_total}
+                    </button>
+                    <br />
+                    <b>Aptitude test marks: </b> <br />
+                    <button disabled className="btn btn-warning">
+                      {" "}
+                      {data.aptitude_test || 0}
+                    </button>
+                    <br />
+                  </div>
+
+                  <div className="col-sm-4">
+                    {Object.keys(data.social).map((key, i) => {
+                      return (
+                        <div>
+                          <b>{key}: </b> <br />
+                          <a href={data.social[key]}>{data.social[key]}</a>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="col-sm-12">
+                    <hr />
+                  </div>
+                  <div className="col-sm-12">
+                    <b>Education Qualifications </b>
+                    <div className="lisq wauto">
+                      {(data.education || []).map((data, i) => {
+                        return (
+                          <span className="lisoq" key={i}>
+                            {data.qualification}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="col-sm-12">
+                    <hr />
+                  </div>
+                  <div className="col-sm-12">
+                    <b>Experience: </b>
+                    <div className="lisq wauto">
+                      {(data.experiences || []).map((data, i) => {
+                        return (
+                          <span className="lisoq" key={i}>
+                            {data.experience}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="col-sm-12">
+                    <hr />
+                  </div>
+                  <div className="col-sm-12">
+                    <b>Skills </b>
+                    <div className="lisq wauto">
+                      {(data.skills || []).map((data, i) => {
+                        return (
+                          <span className="lisoq" key={i}>
+                            {data.skill}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="col-sm-12">
+                    <hr />
+                  </div>
+                  <div className="col-sm-12">
+                    <b>Soft Skills </b>
+                    <div className="lisq wauto">
+                      {Object.keys(data.soft_skills).map((key, i) => {
+                        return (
+                          <span className="lisoq" key={i}>
+                            {key} : {data.soft_skills[key]}/10
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="col-sm-12">
+                    <hr />
+                  </div>
+                  <div className="col-sm-12">
+                    <button
+                      onClick={async () => {
+                        await this.setState({
+                          currentCard: i,
+                        });
+                        await this.setState({
+                          show: true,
+                        });
+                      }}
+                      className="btn btn-success"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          <Modal
+            size="lg"
+            show={this.state.show}
+            onHide={() => this.handleClose()}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Edit Score</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="row">
+                <div className="col-sm-4">
+                  <div className="form-group">
+                    <label>Aptitude Test marks</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      required
+                      name="aptitude_test"
+                    />
+                  </div>
+                </div>
+                {Object.keys(
+                  this.state.jobs.length > 0
+                    ? this.state.currentCard !== null
+                      ? this.state.jobs[this.state.currentCard].soft_skills
+                      : []
+                    : []
+                ).map((data, i) => {
+                  return (
+                    <div className="col-sm-4">
+                      <div key={i} className="form-group">
+                        <label>
+                          {data} marks :{" "}
+                          <b>
+                            {
+                              this.state.jobs[this.state.currentCard]
+                                .soft_skills[data]
+                            }
+                          </b>
+                        </label>
+                        <input
+                          type="range"
+                          className="form-control"
+                          required
+                          name={data}
+                          min={0}
+                          max={10}
+                          value={
+                            this.state.jobs[this.state.currentCard].soft_skills[
+                              data
+                            ]
+                          }
+                          onChange={(e) => {
+                            var cardList = this.state.jobs;
+                            cardList[this.state.currentCard].soft_skills[data] =
+                              e.target.value;
+                            this.setState({
+                              jobs: cardList,
+                            });
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => this.handleClose()}>
+                Close{" "}
+              </Button>
+              <Button onClick={() => this.handleClose()} variant="primary">
+                Submit
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
-
-        <div className="container mb-5">
-          <form>
-            <div className="row">
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Job Description</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    // placeholder="Enter your Job Description"
-                  />
-                </div>
-              </div>
-
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Expertise in</label>
-                  <input type="text" className="form-control" />
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Minimum experience in similer role</label>
-                  <input type="text" className="form-control" />
-                </div>
-              </div>
-
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Minimal Educational Qualification</label>
-                  <select className="form-control">
-                    <option>BBA</option>
-                    <option>BSc.</option>
-                    <option>BTech</option>
-                    <option>BIT</option>
-                    <option>BEng</option>
-                    <option>MSc</option>
-                    <option>MBA</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Major / Specialization</label>
-                  <select className="form-control">
-                    <option>Information Techology</option>
-                    <option>Software Engineering</option>
-                    <option>Cyber Security</option>
-                    <option>Network Engineering</option>
-                    <option>Information System Engineering</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="col-md-4 mb-2">
-                <div className="form-group">
-                  <label>Minimum GPA or Above</label>
-                  <input type="text" className="form-control" />
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="form-group">
-                  <label>Gender</label>
-                  <select className="form-control">
-                    <option>Male</option>
-                    <option>Female</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="form-group">
-                  <label>Marital Status</label>
-                  <select className="form-control">
-                    <option>Maried</option>
-                    <option>Single</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Fluent Languages</label>
-                  <div className="form-check form-check-inline ml-5">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox1"
-                    />
-                    <label className="form-check-label" for="inlineCheckbox1">
-                      English
-                    </label>
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox2"
-                    />
-                    <label className="form-check-label" for="inlineCheckbox2">
-                      Sinhala
-                    </label>
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox3"
-                    />
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      Tamil
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Computer Skills</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    // placeholder="Enter your Job Description"
-                  />
-                  <small className="form-text text-muted">
-                    enter values seperated by ","
-                  </small>
-                </div>
-              </div>
-
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Professional Qualification</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    // placeholder="Enter your Job Description"
-                  />
-                  <small className="form-text text-muted">
-                    enter values seperated by ","
-                  </small>
-                </div>
-              </div>
-
-              <div className="col-md-12">
-                <div className="form-group">
-                  <label>Keywords</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    // placeholder="Enter your Job Description"
-                  />
-                  <small className="form-text text-muted">
-                    enter values seperated by ","
-                  </small>
-                </div>
-              </div>
-
-              <div className="col-md-12">
-                <button
-                  onClick={() => this.handleSubmit()}
-                  type="button"
-                  className="btn btn-light"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <Modal
-          size="md"
-          centered
-          show={this.state.showRes}
-          onHide={() =>
-            this.setState({
-              showRes: false,
-            })
-          }
-        >
-        
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">uid</th>
-                <th scope="col">name</th>
-                <th scope="col">email</th>
-              </tr>
-            </thead>
-            <tbody>{empList}</tbody>
-          </table>
-        </Modal>
       </div>
     );
   }
 }
 
-export default SortListing;
+export default JobPosting;

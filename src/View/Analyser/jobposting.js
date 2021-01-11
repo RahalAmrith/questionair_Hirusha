@@ -8,146 +8,213 @@ import Loading from "../Loading/Loading";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button } from "react-bootstrap";
 class JobPosting extends Component {
-    constructor() {
-        super();
-        this.state = {
-            loading: false,
-            btnsate: false,
-            jobs: [],
-            show: false
-        };
-    }
+  constructor() {
+    super();
+    this.state = {
+      loading: false,
+      btnsate: false,
+      jobs: [],
+      show: false,
+    };
+  }
 
-    async componentDidMount() {
-        const res = await axios.post(`https://1w8w5rck4i.execute-api.us-east-1.amazonaws.com/Prod/jpops`,
-            {
-                operation: "view"
-            },
-            {
-                "Access-Control-Allow-Headers": "*",
-                "Access-Control-Allow-Methods": "POST",
-                "Access-Control-Allow-Origin": "*",
-                "Content-Type": "application/json",
-            })
+  async componentDidMount() {
+    await this.loadData();
+  }
 
-        console.log(res);
-        // const res = await axios.post(`https://1w8w5rck4i.execute-api.us-east-1.amazonaws.com/Prod/jpops`,
-        //     {
-        //         operation: "view"
-        //     }, {headers: {
-        //         "Access-Control-Allow-Headers": "*",
-        //         "Access-Control-Allow-Methods": "POST",
-        //         "Access-Control-Allow-Origin": "*",
-        //         "Content-Type": "application/json",
-        //     }}
-        //     )
-        // ).then(Response => {
+  async loadData() {
+    this.setState({
+      loading: true,
+    });
 
-        //     console.log(Response);
-        // })
-        //     .catch(err => {
-        //         console.error(err);
-        //     });
-    }
+    const data = {
+      operation: "view",
+    };
 
-    handleShow() {
+    await axios
+      .post(`http://54.211.25.125:5000/api/emp/jobposting`, data)
+      .then((Response) => {
+        console.log(Response);
         this.setState({
-            show: true
-        })
-    }
-    handleClose() {
+          jobs: Response.data.message,
+          loading: false,
+        });
+      })
+      .catch((Error) => {
+        console.error(Error);
+
         this.setState({
-            show: false
-        })
-    }
-    render() {
-        return (
-            <div className="container-fluid FU_main">
-                <Loading show={this.state.loading} />
-                <div className="container-fluid">
-                    <h3 className="mb-2" style={{ color: 'white' }}>Job Posting</h3>
-                    <div className="card mb-3">
-                        <h6 className="m-2">All Jobs</h6>
-                        <table className="table" >
-                            <thead>
-                                <tr>
-                                    <th scope="col">Jobdescription</th>
-                                    <th scope="col">Expertize in</th>
-                                    <th scope="col">Gender</th>
-                                    <th scope="col">No of Q</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Padula Guruge</th>
-                                    <td>90</td>
-                                    <td>0776341997</td>
-                                    <td>padula@gmail.com</td>
-                                    <td><button className="btn btn-success" onClick={() => this.handleShow()}> View More</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Rahal Amirth</th>
-                                    <td> 82</td>
-                                    <td>0728343000</td>
-                                    <td>rahalamrith46@gmail.com</td>
-                                    <td><button className="btn btn-md btn-success"> View More</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Savindu Nipun</th>
-                                    <td> 78</td>
-                                    <td>0776345006</td>
-                                    <td>snipun@gmail.com</td>
-                                    <td><button className="btn btn-success"> View More</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Sandini Pitawala</th>
-                                    <td> 77</td>
-                                    <td>0771138255</td>
-                                    <td>sandini97@gmail.com</td>
-                                    <td><button className="btn btn-success"> View More</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Dulanjana Isuru</th>
-                                    <td>60</td>
-                                    <td>0713645444</td>
-                                    <td>isududulanjana@gmail.com</td>
-                                    <td><button className="btn btn-success"> View More</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Pasindu Chamod</th>
-                                    <td>60</td>
-                                    <td>0756241887</td>
-                                    <td>chamod.p@gmail.com</td>
-                                    <td><button className="btn btn-success"> View More</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+          jobs: [],
+        });
+        this.setState({
+          loading: false,
+        });
+      })
+      .finally(() => {
+        this.setState({
+          showRes: true,
+        });
+      });
+  }
+
+  async handleDelete(_data) {
+    this.setState({
+      loading: true,
+    });
+
+    const data = {
+      operation: "delete",
+      jobid: _data.jpid,
+    };
+
+    await axios
+      .post(`http://54.211.25.125:5000/api/emp/jobposting`, data)
+      .then((Response) => {
+        console.log(Response);
+        this.setState({
+          loading: false,
+        });
+      })
+      .catch((Error) => {
+        console.error(Error);
+
+        this.setState({
+          loading: false,
+        });
+      })
+      .finally(() => {
+        this.loadData();
+      });
+  }
+
+  handleClose() {
+    this.setState({
+      show: false,
+    });
+  }
+  render() {
+    return (
+      <div className="container-fluid FU_main">
+        <Loading show={this.state.loading} />
+        <div className="container-fluid">
+          <h3 className="mb-2" style={{ color: "white" }}>
+            Job Posting
+          </h3>
+
+          {this.state.jobs.map((data, i) => {
+            return (
+              <div className="card mb-3 jobCard">
+                <div className="row">
+                  <div className="col-sm-4">
+                    <b>Job Description: </b>
+                    {data.jobdescription}
+                    <br />
+                    <b>Expertize in: </b>
+                    {data.expertizein}
+                    <br />
+                    <b>Min. experiance in similar role: </b>
+                    {data.minexperiance_in_similar_role}
+                    <br />
+                    <b>Min. ducation qualification: </b>
+                    {data.minedu_qualification}
+                    <br />
+                    <b>Major: </b>
+                    {data.major}
+                    <br />
+                  </div>
+                  <div className="col-sm-4">
+                    <b>Min. GPA: </b>
+                    {data.minGPA}
+                    <br />
+                    <b>Max Age: </b>
+                    {data.maxAGE}
+                    <br />
+                    <b>Gender: </b>
+                    {data.gender}
+                    <br />
+                  </div>
+                  <div className="col-sm-4">
+                    <b>Keywords: </b>
+                    <div className="lisq wauto">
+                      {(data.keyWords || []).map((data, i) => {
+                        return (
+                          <span className="lisoq" key={i}>
+                            {data}
+                          </span>
+                        );
+                      })}
                     </div>
-                    <Modal
-                        show={this.state.show}
-                        onHide={()=>this.handleClose()}
-                        backdrop="static"
-                        keyboard={false}
+                    <b>languages: </b>
+                    <div className="lisq wauto">
+                      {(data.languages || []).map((data, i) => {
+                        return (
+                          <span className="lisoq" key={i}>
+                            {data}
+                          </span>
+                        );
+                      })}
+                    </div>
+                    <b>accuracy: </b>
+                    <div className="lisq wauto">
+                      <span className="lisoq green">{data.accuracy}</span>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-12">
+                    <hr />
+                  </div>
+                  <div className="col-sm-10">
+                    <b>List of candidates: </b>
+                    <div className="lisq wauto">
+                      {(data.listofq || []).map((data, i) => {
+                        return (
+                          <span className="lisoq" key={i}>
+                            {data}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="col-sm-2 delbtn">
+                    <button
+                      onClick={() => this.handleDelete(data)}
+                      className="btn btn-danger"
                     >
-                        <Modal.Header closeButton>
-                            <Modal.Title>Modal title</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            I will not close if you click outside me. Don't even try to press
-                            escape key.  </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={()=>this.handleClose()}>
-                                Close  </Button>
-                            <Button variant="primary">Understood</Button>
-                        </Modal.Footer>
-                    </Modal>
+                      Delete
+                    </button>
+                  </div>
                 </div>
-            </div>
-        );
-    }
+                {/* {JSON.stringify(data)} */}
+              </div>
+            );
+          })}
+
+          <Modal
+            show={this.state.show}
+            onHide={() => this.handleClose()}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Modal title</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              I will not close if you click outside me. Don't even try to press
+              escape key.{" "}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => this.handleClose()}>
+                Close{" "}
+              </Button>
+              <Button variant="primary">Understood</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default JobPosting;

@@ -1,31 +1,75 @@
 .input-range {
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-  
-  .input-range__slider {
-    width: 100%;
-  }
-  
-  .progress,
-  .progress__bar {
-    min-height: 1.25rem;
-  }
-  
-  .progress__value {
-    position: absolute;
-    top: .0625rem;
-    right: .25rem;
-  }
-  
-  .progress {
-    background-color: #545454;
-    position: relative;
-  }
-  
-  .progress__bar {
-    background-color: #43b7e1;
-  }
-  
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.input-range__slider {
+  width: 100%;
+}
+
+.progress,
+.progress__bar {
+  min-height: 1.25rem;
+}
+
+.progress__value {
+  position: absolute;
+  top: 0.0625rem;
+  right: 0.25rem;
+}
+
+.progress {
+  background-color: #545454;
+  position: relative;
+}
+
+.progress__bar {
+  background-color: #43b7e1;
+}
+
+.form-group label {
+  text-transform: capitalize;
+}
+
+.rec_tick {
+  height: 30px;
+  width: 75px;
+  object-fit: contain;
+}
+
+td {
+  text-align: center;
+}
+
+.lisq {
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wauto {
+  width: auto;
+}
+
+.lisq .green {
+  background-color: #19c2ff;
+}
+
+.lisoq {
+  padding: 5px 12px;
+  background-color: #0d6c8f;
+  margin: 2px;
+  border-radius: 10px;
+  color: aliceblue;
+}
+
+.jobCard {
+  padding: 15px;
+}
+
+.delbtn{
+  display: flex;
+  align-items: center;
+}

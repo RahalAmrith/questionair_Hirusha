@@ -44,32 +44,55 @@ class Initials extends Component {
 
     await axios
       .post(
-        `https://vg2gtzbtlf.execute-api.us-east-1.amazonaws.com/Prod/iShort`,
+        // `https://vg2gtzbtlf.execute-api.us-east-1.amazonaws.com/Prod/iShort`,
+        `http://54.211.25.125:5000/api/emp/initial`,
+        // {
+        //   jobdescription: this.state.jobdescription,
+        //   expertizein: this.state.expertizein,
+        //   minexperiance_in_similar_role: this.state
+        //     .minexperiance_in_similar_role,
+        //   minedu_qualification: this.state.minedu_qualification,
+        //   major: this.state.major,
+        //   minGPA: this.state.minGPA,
+        //   maxAGE: this.state.maxAGE,
+        //   gender: this.state.gender,
+        //   maritalStatus: this.state.maritalStatus,
+        //   languages: this.state.languages,
+        //   ComputerSkills: this.state.ComputerSkills,
+        //   ProfesstionalQ: this.state.ProfesstionalQ,
+        //   keyWords: this.state.keyWords,
+        //   fromDate: this.state.fromDate,
+        //   toDate: this.state.toDate,
+        //   accuracy: this.state.accuracy,
+        // },
         {
-          jobdescription: this.state.jobdescription,
-          expertizein: this.state.expertizein,
-          minexperiance_in_similar_role: this.state
-            .minexperiance_in_similar_role,
-          minedu_qualification: this.state.minedu_qualification,
-          major: this.state.major,
-          minGPA: this.state.minGPA,
-          maxAGE: this.state.maxAGE,
-          gender: this.state.gender,
-          maritalStatus: this.state.maritalStatus,
-          languages: this.state.languages,
-          ComputerSkills: this.state.ComputerSkills,
-          ProfesstionalQ: this.state.ProfesstionalQ,
-          keyWords: this.state.keyWords,
-          fromDate: this.state.fromDate,
-          toDate: this.state.toDate,
-          accuracy: this.state.accuracy,
+          jobdescription: "DevOps Engineer",
+          expertizein: "AWS",
+          minexperiance_in_similar_role: 2,
+          minedu_qualification: "BSc",
+          major: "Systems Engineering",
+          minGPA: 3.0,
+          maxAGE: 30,
+          gender: "Male",
+          maritalStatus: "single",
+          languages: ["Sinhala", "English"],
+          ComputerSkills: [],
+          ProfesstionalQ: [],
+          keyWords: ["aws", "cloud"],
+          fromDate: "2020-04-01",
+          toDate: "2020-08-01",
+          accuracy: 90,
         },
         { headers: { "Content-Type": "application/json" } }
       )
       .then((Response) => {
         console.log(Response);
+        console.table(Response.data.message);
         // this.setState({ res: Response.data.candidate });
         this.setState({
+          res: Array.isArray(Response.data.message)
+            ? Response.data.message
+            : [{ ...Response.data.message }],
           loading: false,
         });
       })
@@ -94,10 +117,21 @@ class Initials extends Component {
     var empList = this.state.res.map((data, i) => {
       return (
         <tr>
-          <th scope="row">{i}</th>
-          <td>{data.uid}</td>
-          <td>{data.name}</td>
-          <td>{data.email}</td>
+          <th scope="col">{data.noofq}</th>
+          <td>{data.jobdescription}</td>
+          <td>{data.major}</td>
+          <td>{data.minedu_qualification}</td>
+          <td>
+            <div className="lisq">
+              {data.listofq.map((data, i) => {
+                return (
+                  <span className="lisoq" key={i}>
+                    {data}
+                  </span>
+                );
+              })}
+            </div>
+          </td>
         </tr>
       );
     });
@@ -345,7 +379,7 @@ class Initials extends Component {
         </div>
 
         <Modal
-          size="md"
+          size="xl"
           centered
           show={this.state.showRes}
           onHide={() =>
@@ -354,13 +388,14 @@ class Initials extends Component {
             })
           }
         >
-          <table className="table">
+          <table className="table" width="100%">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">uid</th>
-                <th scope="col">name</th>
-                <th scope="col">email</th>
+                <th scope="col">No of Candidates</th>
+                <th scope="col">Job description</th>
+                <th scope="col">Major</th>
+                <th scope="col">Minmum education qualification</th>
+                <th scope="col">Candidate Ids</th>
               </tr>
             </thead>
             <tbody>{empList}</tbody>
