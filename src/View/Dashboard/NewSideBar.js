@@ -201,21 +201,22 @@ class AdminSidebar extends React.Component {
               <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
                 <li
                   style={{ color: "#c9cbcc", cursor: "pointer" }}
-                  onClick={() => this.onchanePageState("appraisal")}
-                >
-                  {" "}
-                  Survey{" "}
-                </li>
-              </ul>
-              <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
-                <li
-                  style={{ color: "#c9cbcc", cursor: "pointer" }}
                   onClick={() => this.onchanePageState("keydrivers")}
                 >
                   {" "}
                   Key Drivers{" "}
                 </li>
               </ul>
+              <ul className="ml-5 mt-2 pt-2" style={{ color: "white" }}>
+                <li
+                  style={{ color: "#c9cbcc", cursor: "pointer" }}
+                  onClick={() => this.onchanePageState("appraisal")}
+                >
+                  {" "}
+                  Survey{" "}
+                </li>
+              </ul>
+           
               {/* <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                                
                                     <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Quizzes   </li>

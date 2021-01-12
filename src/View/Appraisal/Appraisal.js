@@ -20,6 +20,9 @@ class Appraisal extends Component {
       questions: [],
       showRes: false,
 
+      employee: [],
+      employee_q: [],
+
       questions2: [
         {
           qnumber: 1,
@@ -120,7 +123,7 @@ class Appraisal extends Component {
     var ReqData = {
       qtype: this.state.keyDriver,
       general: this.state.additionalQ,
-      ids : []
+      ids: []
     };
 
     await Axios.post(
@@ -148,109 +151,123 @@ class Appraisal extends Component {
       });
   }
 
-  chnagemodal=(e)=>{
+  chnagemodal = (e) => {
     e.preventDefault()
     this.setState({
       showRes: true,
 
     })
   }
+
+
+
+  componentDidMount() {
+    this.load_data_empl()
+    this.table_data()
+  }
+
+  // --------------------
+  // --------------------
+  // --------------------
+  async load_data_empl() {
+    const data = await Axios.post(`${Config.host}${Config.port}/api/emp/view`)
+    await this.setState({
+      employee: data.data.Employees
+    })
+    console.log(this.state.employee);
+  }
+
+  table_data = async (e) => {
+
+    const data = await Axios.post(`${Config.host}${Config.port}/api/apr/vq`)
+    console.log(data);
+
+    this.setState({
+      employee_q: data.data.Employees
+    })
+
+  }
+
+
+
+
+
+
+
+
+
+
+
   render() {
     var questionsList = this.state.questions.map((data, i) => {
       return <Question data={data} key={i} />;
     });
+
     return (
       <div className="container-fluid AP_main">
         <Loading show={this.state.loading} />
         {this.state.showQuestions ? null : (
           <div className="container">
-          <h3 style={{color:'white'}}>Employee Engagement Survey Generator
-</h3>           
+            <h3 style={{ color: 'white' }}>Employee Engagement Survey Generator</h3>
             <div className="card">
-              <div className="card-header">Key Driver</div>
+              <div className="card-header">Select Employees</div>
               <div className="card-body">
                 <form >
-                  <h5 className="card-title">Key Driver</h5>
-                  <p className="card-text">Please Select your Key Driver</p>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="eDev"
-                      value="empdev"
-                    />
-                    <label className="form-check-label">
-                      Employee Development
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="cult"
-                      value="culture"
-                    />
-                    <label className="form-check-label">Culture</label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="WLBal"
-                      value="work"
-                    />
-                    <label className="form-check-label">
-                      Work-Life balance
-                    </label>
-                  </div>
-                  <div className="form-check mb-3">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="leadership"
-                      value="leader"
-                    />
-                    <label className="form-check-label">Leadership</label>
-                  </div>
+                  <h5 className="card-title">Select Employees</h5>
+                  {this.state.employee && this.state.employee.map((data, i) => {
+                    return (<div className="form-check" key={i}>
 
-                  <h5 className="card-title">General Questions</h5>
-                  <p className="card-text">
-                    Do you want to add additional Questions
-                  </p>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="additionalQ"
-                      value="true"
-                    />
-                    <label className="form-check-label">Yes</label>
-                  </div>
-                  <div className="form-check mb-3">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="additionalQ"
-                      value="false"
-                    />
-                    <label className="form-check-label">No</label>
-                  </div>
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        name="emp_email"
+                        value={`${data.email}`}
+                      />
+                      <label className="form-check-label">
+                        {data.email}
+                      </label>
+                    </div>);
+                  })}
+                  <div className="card-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Key Id</th>
+                          <th scope="col" style={{ textAlign: 'left' }}>Question</th>
+                          <th scope="col">Type</th>
+                        </tr>
+                      </thead>
+                      <tbody>
 
-                  <button className="btn btn-primary" onClick={(e)=> this.chnagemodal(e)}>Submit</button>
+                        {this.state.employee_q && this.state.employee_q.map((data, i) => {
+                          return (
+
+                            <tr key={i}>
+                              <th >
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  name="qid"
+                                  value={`${data.q_id}`}
+                                />{data.q_id}</th>
+                              <td style={{ textAlign: 'left' }}>{data.question}</td>
+                              <td>{data.q_type}</td>
+
+                            </tr>
+                          );
+                        })}
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <button className="btn btn-primary" onClick={(e) => this.chnagemodal(e)}>Submit</button>
                 </form>
               </div>
             </div>
           </div>
         )}
-        {/* {this.state.showQuestions ? (
-          <div className="container">
-            <h1>Survay Question</h1>
-            <hr />
-            {questionsList}
-          </div>
-        ) : null} */}
 
-<Modal
+        <Modal
           size="md"
           centered
           show={this.state.showRes}
@@ -260,7 +277,6 @@ class Appraisal extends Component {
             })
           }
         >
-          
           <h6 className="m-1 p-2">Employee Engagement Survey has distributed via employee emails.</h6>
         </Modal>
       </div>

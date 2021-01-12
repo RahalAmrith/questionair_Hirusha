@@ -13,7 +13,8 @@ class KeyDrivers extends Component {
             all_key_drivers: [],
             quize_type: '',
             ansewer_type: 'radio',
-            answer: ''
+            answer: '',
+            employee: []
         };
 
 
@@ -23,7 +24,7 @@ class KeyDrivers extends Component {
     onmodl = async (e) => {
         e.preventDefault()
         const data = await Axios.post(`${Config.host}${Config.port}/api/apr/addkey`, { key: this.state.value })
-        console.log(data);
+        // console.log(data);
         await this.load_data()
         this.setState({
             showRes: true,
@@ -31,10 +32,21 @@ class KeyDrivers extends Component {
 
         })
     }
+    table_data = async (e) => {
+
+        const data = await Axios.post(`${Config.host}${Config.port}/api/apr/vq`)
+        console.log(data);
+
+        this.setState({
+            employee: data.data.Employees
+        })
+
+    }
 
     async componentDidMount() {
         await this.load_data()
-        console.log(this.state.all_key_drivers);
+        await this.table_data()
+        // console.log(this.state.all_key_drivers);
     }
 
     async load_data() {
@@ -47,9 +59,6 @@ class KeyDrivers extends Component {
 
     modal2 = async (e) => {
         e.preventDefault()
-        console.log("Radio", this.state.ansewer_type);
-        console.log("Qusiton", this.state.answer);
-        console.log("KWY", this.state.quize_type);
         const data = await Axios.post(`${Config.host}${Config.port}/api/apr/addq`,
             {
                 type: this.state.ansewer_type,
@@ -59,7 +68,7 @@ class KeyDrivers extends Component {
 
         )
 
-        console.log(data);
+        // console.log(data);
         this.setState({
             showRes2: true,
             answer: ''
@@ -227,33 +236,27 @@ class KeyDrivers extends Component {
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
+                                        <th scope="col">Key Id</th>
+                                        <th scope="col" style={{textAlign:'left'}}>Question</th>
+                                        <th scope="col">Type</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
+
+                                    {this.state.employee && this.state.employee.map((data, i) => {
+                                        return (
+
+                                            <tr key={i}>
+                                                <th >{data.key_id}</th>
+                                                <td style={{textAlign:'left'}}>{data.question}</td>
+                                                <td>{data.q_type}</td>
+
+                                            </tr>
+                                        );
+                                    })}
+
                                 </tbody>
-                            </table>a
+                            </table>
                         </div>
                     </div>
 
