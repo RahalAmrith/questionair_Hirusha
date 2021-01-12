@@ -14,6 +14,7 @@ class Config {
       getSurvayQuestions : "/api/apr/camp",
       setSurvayAns : "/api/apr/ans",
       setSurvayres : "/api/apr/results",
+      getSurveySummary : "/api/apr/summary",
 
       // Project Analysis
       getEmpData : "/api/trend/recruit",

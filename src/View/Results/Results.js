@@ -35,6 +35,7 @@ class Results extends Component {
       ReqData
     )
       .then(async (Response) => {
+        console.log(JSON.stringify(Response.data.results.data));
         this.setState({
           results: Response.data.results.data,
         });

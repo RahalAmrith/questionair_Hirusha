@@ -28,7 +28,8 @@ import Sortlisting from "../SortListing/SortListing";
 import Appraisal from "../Appraisal/Appraisal";
 import Projectanalysis from "../ProjectAnalysis/ProjectAnalysis";
 import Bestcandidate from "../BestCandidate/BestCandidate";
-import ResultAll from "../Results/Results";
+// import ResultAll from "../Results/Results";
+import ResultAll from "../Results2/Results2";
 import KeyDrivers from "../KeyDrivers/KeyDrivers";
 import Initials from "../Analyser/initial";
 import JobPosting from "../Analyser/jobposting";
@@ -216,7 +217,7 @@ class AdminSidebar extends React.Component {
                   Survey{" "}
                 </li>
               </ul>
-           
+
               {/* <ul className="ml-5 mt-2 pt-2" style={{ color: 'white' }}>
                                
                                     <li style={{ color: '#c9cbcc' , cursor:'pointer'}}> Quizzes   </li>
