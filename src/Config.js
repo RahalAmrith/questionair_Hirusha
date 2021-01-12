@@ -1,7 +1,8 @@
 class Config {
   constructor() {
     // this.host = "http://13.59.253.94";
-    this.host = "http://3.23.104.187";
+    // this.host = "http://3.23.104.187";
+    this.host = "http://54.211.25.125";
     this.port = ":5000";
 
     this.api = {
