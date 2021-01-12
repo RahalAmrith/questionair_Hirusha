@@ -22,7 +22,8 @@ class Appraisal extends Component {
 
       employee: [],
       employee_q: [],
-
+      emp_list:[],
+      ques_list:[],
       questions2: [
         {
           qnumber: 1,
